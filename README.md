@@ -1,66 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Hướng dẫn chạy dự án Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Hướng dẫn này cung cấp thông tin về cách chạy dự án Laravel sau khi đã clone nó về máy tính của bạn.
 
-## About Laravel
+## Bước 1: Tạo cơ sở dữ liệu
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Trước tiên, bạn cần tạo một cơ sở dữ liệu trong phpMyAdmin. Bạn có thể đặt tên cơ sở dữ liệu là "ems" hoặc chọn một tên khác. Hãy nhớ tên cơ sở dữ liệu này vì chúng ta sẽ sử dụng nó sau này.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Bước 2: Cài đặt các thư viện cần thiết
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Mở terminal và di chuyển đến thư mục chứa dự án Laravel đã được clone về.
+2. Chạy lệnh sau để cài đặt các thư viện cần thiết:
 
-## Learning Laravel
+   ```shell
+   composer install
+Lệnh trên sẽ tải xuống và cài đặt tất cả các gói và thư viện mà dự án Laravel yêu cầu.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Bước 3: Cấu hình biến môi trường
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Đổi tên tệp .env.example thành .env. Tệp .env chứa các biến môi trường cần thiết để cấu hình dự án Laravel.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Mở tệp .env bằng trình chỉnh sửa văn bản và đặt các thông tin sau:
 
-## Laravel Sponsors
+   * DB_DATABASE: Tên cơ sở dữ liệu bạn đã tạo ở Bước 1 (ví dụ: ems).
+   * DB_USERNAME: Tên người dùng MySQL của bạn.
+   * DB_PASSWORD: Mật khẩu người dùng MySQL của bạn.
+   * Đảm bảo rằng các thông tin cấu hình này chính xác để dự án có thể kết nối đến cơ sở dữ liệu.
+## Bước 4:  Chạy dự án Laravel
+1. Trong terminal, di chuyển đến thư mục dự án Laravel (nếu chưa di chuyển).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+2. Chạy lệnh sau để tạo khóa ứng dụng:
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    ```shell
+    php artisan key:generate
+    ```
+    Lệnh trên sẽ tạo ra một khóa ứng dụng ngẫu nhiên và lưu nó trong tệp .env.
+3. Chạy lệnh sau để chạy các migration và seed:
+    ```shell
+   php artisan migrate --seed
+   ```
+    Lệnh trên sẽ thực thi các migration để tạo bảng trong cơ sở dữ liệu và thêm dữ liệu mẫu (nếu có)
+4. Cuối cùng chạy lệnh sau để khởi chạy máy chủ phát triển Laravel:
+    ```shell
+    php artisan serve
+Lệnh trên sẽ khởi chạy máy chủ phát triển Laravel trên localhost với cổng mặc định là 8000. Bạn có thể truy cập dự án Laravel bằng cách mở trình duyệt và nhập URL sau: http://localhost:8000.
